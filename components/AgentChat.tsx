@@ -8,10 +8,10 @@ import { Icon, type IconName } from "./Icon";
 import { JobCard } from "./JobCard";
 import { PageHeading } from "./PageHeading";
 
-const prompts: { title: string; detail: string; text: string; icon: IconName; review?: true }[] = [
-  { title: "Shortlist Chennai’s top 3", detail: "Rank roles by my skills", text: "Find jobs in Chennai that match my skills and save the top 3.", icon: "pin", review: true },
+const prompts: { title: string; detail: string; text: string; icon: IconName }[] = [
+  { title: "Shortlist Chennai’s top 3", detail: "Rank roles by my skills", text: "Find jobs in Chennai that match my skills and save the top 3.", icon: "pin" },
   { title: "Explore skill gaps", detail: "Compare data analyst roles", text: "Which skills am I missing for data analyst roles?", icon: "layers" },
-  { title: "Add Docker and search again", detail: "Update my skills and rerank roles", text: "I just learned Docker, add it to my profile and search again.", icon: "plus", review: true },
+  { title: "Add Docker and search again", detail: "Update my skills and rerank roles", text: "I just learned Docker, add it to my profile and search again.", icon: "plus" },
   { title: "Browse internships", detail: "Compare entry-level opportunities", text: "Find internships I’m eligible for and rank them by skill match.", icon: "bookmark" },
 ];
 
@@ -133,7 +133,7 @@ export default function AgentChat() {
 
   return (
     <section className="chat-page" data-empty={messages.length === 0}>
-      <PageHeading title="Job Search Chat" icon="chat"
+      <PageHeading title="Discover" icon="chat"
         description="Find eligible roles, compare your skills, and build your shortlist."
         action={messages.length > 0 && (
           <button type="button" className="secondary-button new-chat" disabled={pending} onClick={() => {
@@ -147,16 +147,14 @@ export default function AgentChat() {
       />
 
       {messages.length === 0 ? (
-        <div className="surface chat-welcome">
+        <div className="chat-welcome">
           <div className="welcome-copy">
             <div className="orb" aria-hidden="true"><Icon name="spark" size={29} /></div>
-            <h2>Find your next role.</h2>
-            <p>Start with a suggested search or ask in your own words.</p>
+            <p className="eyebrow">Your next chapter</p>
+            <h1>A little guidance.<br /><span>A world of possibility.</span></h1>
+            <p>Discover roles that fit your skills. Find your gaps. Take your next step with confidence.</p>
           </div>
-          <PromptChoices onChoose={({ text, review }) => {
-            if (review) preparePrompt(text);
-            else void send(text);
-          }} />
+          <PromptChoices onChoose={({ text }) => preparePrompt(text)} />
         </div>
       ) : (
         <div className="transcript" role="log" aria-label="Conversation">
@@ -220,6 +218,7 @@ export default function AgentChat() {
             <Icon name="send" />
           </button>
         </form>
+        <p className="composer-hint">{messages.length === 0 ? "Start with a suggestion, or tell us what you’re looking for." : "AI can make mistakes. Review job details before applying."}</p>
       </div>
     </section>
   );

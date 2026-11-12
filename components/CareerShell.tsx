@@ -8,7 +8,7 @@ import { ChatProvider } from "./ChatProvider";
 import { Icon, type IconName } from "./Icon";
 
 const links: { href: string; label: string; short: string; icon: IconName }[] = [
-  { href: "/", label: "Job Search Chat", short: "Job Search", icon: "chat" },
+  { href: "/", label: "Discover", short: "Discover", icon: "chat" },
   { href: "/profile", label: "My Profile", short: "Profile", icon: "user" },
   { href: "/shortlist", label: "My Shortlist", short: "Shortlist", icon: "bookmark" },
 ];

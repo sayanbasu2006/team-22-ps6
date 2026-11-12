@@ -45,7 +45,8 @@ export default function LoginPage() {
           <span className="brand-mark"><Icon name="spark" size={19} /></span>
           <span>Career<span className="brand-accent">Match</span></span>
         </div>
-        <h1>Welcome to CareerMatch</h1>
+        <h1>Your next chapter<br />starts here.</h1>
+        <p className="login-intro">A more personal way to find your place. Sign in to discover roles, build your skills, and keep your next move in sight.</p>
         <div className="login-options" role="group" aria-label="Sign-in options">
           {options.map(({ id, label }) => (
             <button key={id} type="button" className="menu-action" disabled={pending}
@@ -53,7 +54,7 @@ export default function LoginPage() {
           ))}
         </div>
         <form key={mode} onSubmit={handleSubmit} className="login-form">
-          <p className="muted">{mode === "demo" ? "Use the team passcode to open the seeded demo."
+          <p className="muted">{mode === "demo" ? "Enter your team passcode to explore CareerMatch."
             : mode === "register" ? "Choose a fictional username for your own workspace."
             : "Sign in to your profile and shortlist."}</p>
           {mode !== "demo" && (
